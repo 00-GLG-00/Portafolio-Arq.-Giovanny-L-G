@@ -534,7 +534,7 @@
 
                 <div class="cv-tabs-container">
                     <div class="pdf-viewer-frame">
-                        <iframe id="pdf-frame" src="pdf/cv-esp.pdf#view=FitH&toolbar=0&navpanes=0" title="Visor de Curriculum Vitae">
+                       <iframe id="pdf-frame" src="pdf/cv-esp.pdf" title="Visor de Curriculum Vitae">
                             <div class="pdf-fallback">
                                 Tu navegador no soporta la visualización directa de PDF. 
                                 <a href="pdf/cv-esp.pdf" target="_blank" style="color:#111; font-weight:bold;">Haz clic aquí para abrirlo.</a>
@@ -601,13 +601,13 @@
             const pdfFrame = document.getElementById('pdf-frame');
             const btnEs = document.getElementById('btn-es');
             const btnEn = document.getElementById('btn-en');
-
+        
             if (lang === 'es') {
-                pdfFrame.src = "pdf/cv-esp.pdf#view=FitH&toolbar=0&navpanes=0";
+                pdfFrame.src = "pdf/cv-esp.pdf";
                 btnEs.classList.add('active');
                 btnEn.classList.remove('active');
             } else if (lang === 'en') {
-                pdfFrame.src = "pdf/cv-ing.pdf#view=FitH&toolbar=0&navpanes=0";
+                pdfFrame.src = "pdf/cv-ing.pdf";
                 btnEn.classList.add('active');
                 btnEs.classList.remove('active');
             }
