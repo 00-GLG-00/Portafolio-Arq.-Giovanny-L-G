@@ -395,17 +395,17 @@
 
             /* --- REGULACIÓN MÓVIL DEL VISOR PDF --- */
             .pdf-viewer-frame {
-                height: 520px; /* Altura óptima para pantallas verticales */
+                height: 520px;
                 width: 100%;
                 max-width: 100vw;
-                overflow: hidden; /* Evita desbordamiento horizontal */
+                overflow: hidden;
             }
 
             .pdf-viewer-frame iframe {
                 width: 100%;
                 height: 100%;
-                transform: scale(1); /* Mantiene la escala del contenedor */
-                -webkit-overflow-scrolling: touch; /* Desplazamiento fluido en iOS */
+                transform: scale(1);
+                -webkit-overflow-scrolling: touch;
             }
 
             .profile-crop-vertical {
@@ -428,7 +428,7 @@
         <div class="image-banner">
             <span class="img-tag">021</span>
             
-            <img src="01.jpg" alt="Proyecto Arquitectónico">
+            <img src="./01.jpg" alt="Proyecto Arquitectónico">
 
             <div class="vertical-text">
                 (ARQUITECTURA & MEP) * ARID LANDSCAPE INTEGRATION
@@ -476,7 +476,7 @@
             </div>
 
             <div class="profile-crop-vertical">
-                <img src="Perfil.png" alt="Foto de perfil">
+                <img src="./Perfil.png" alt="Foto de perfil">
             </div>
 
             <div class="about-block">
@@ -519,10 +519,10 @@
                 <p style="margin-bottom: 16px;">Consulta o descarga las versiones ejecutivas en formato PDF:</p>
 
                 <div class="contact-links" style="margin-bottom: 20px;">
-                    <a href="cv-esp.pdf" target="_blank" rel="noopener" class="contact-btn">
+                    <a href="./cv-esp.pdf" target="_blank" rel="noopener" class="contact-btn">
                         📄 Descargar CV (ES)
                     </a>
-                    <a href="cv-ing.pdf" target="_blank" rel="noopener" class="contact-btn">
+                    <a href="./cv-ing.pdf" target="_blank" rel="noopener" class="contact-btn">
                         📄 Download Resume (EN)
                     </a>
                 </div>
@@ -534,10 +534,10 @@
 
                 <div class="cv-tabs-container">
                     <div class="pdf-viewer-frame">
-                        <iframe id="pdf-frame" src="cv-esp.pdf" title="Visor de Curriculum Vitae">
+                        <iframe id="pdf-frame" src="./cv-esp.pdf" title="Visor de Curriculum Vitae">
                             <div class="pdf-fallback">
                                 Tu navegador no soporta la visualización directa de PDF. 
-                                <a href="cv-esp.pdf" target="_blank" style="color:#111; font-weight:bold;">Haz clic aquí para abrirlo.</a>
+                                <a href="./cv-esp.pdf" target="_blank" style="color:#111; font-weight:bold;">Haz clic aquí para abrirlo.</a>
                             </div>
                         </iframe>
                     </div>
@@ -603,11 +603,11 @@
             const btnEn = document.getElementById('btn-en');
         
             if (lang === 'es') {
-                pdfFrame.src = "cv-esp.pdf";
+                pdfFrame.src = "./cv-esp.pdf";
                 btnEs.classList.add('active');
                 btnEn.classList.remove('active');
             } else if (lang === 'en') {
-                pdfFrame.src = "cv-ing.pdf";
+                pdfFrame.src = "./cv-ing.pdf";
                 btnEn.classList.add('active');
                 btnEs.classList.remove('active');
             }
