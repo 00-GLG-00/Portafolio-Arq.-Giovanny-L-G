@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giovanny Luna García | Portafolio</title>
+    <style>
+        /* 1. FUENTES DE GOOGLE FONTS */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Space+Grotesk:wght@300;500;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            /* Fondo claro con grano suave */
+            background-color: #6d6b68;
+            background-image: radial-gradient(#D5D4D0 0.8px, transparent 0.8px);
+            background-size: 16px 16px;
+            color: #111111;
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 120px 20px 200px 20px;
+            gap: 40vh;
+            overflow-x: hidden;
+        }
+
+        /* --- CLASES Y ESTILOS PARA LA ANIMACIÓN DE DESVANECIMIENTO SUAVE --- */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .fade-section.fade-out {
+            opacity: 0;
+            transform: translateY(-80px);
+            pointer-events: none;
+        }
+
+        .fade-section.fade-in-hidden {
+            opacity: 0;
+            transform: translateY(80px);
+            pointer-events: none;
+        }
+
+        /* LIENZO PRINCIPAL (SECCIÓN HERO) */
+        .poster-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            max-width: 850px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* --- COLUMNA IZQUIERDA: FOTO VERTICAL --- */
+        .image-banner {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background-color: #E5E4E0;
+            overflow: hidden;
+            border-radius: 2px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        }
+
+        .image-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(105%);
+        }
+
+        .img-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #111111;
+        }
+
+        /* --- TEXTO VERTICAL ROTADO --- */
+        .vertical-text {
+            position: absolute;
+            right: -25px;
+            top: 140px;
+            transform: rotate(90deg);
+            transform-origin: right top;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: #777777;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        /* --- COLUMNA DERECHA: TEXTOS Y TIPOGRAFÍA --- */
+        .content-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            padding-top: 1px;
+        }
+
+        .top-code {
+            text-align: right;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: 1px;
+            color: #111111;
+        }
+
+        .main-title-block {
+            margin: auto 0;
+            position: relative;
+        }
+
+        .kanji-title,
+        .kanji-sub {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: #e5e4e0;
+            margin-bottom: 8px;
+            display: block;
+            line-height: 1.4;
+        }
+
+        h1.hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -2px;
+            position: relative;
+            z-index: 2;
+            color: #111111;
+        }
+
+        .title-outline {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -2px;
+            color: transparent;
+            -webkit-text-stroke: 1px #dfd8c3;
+            margin-top: -15px;
+            transform: scaleY(-1);
+            opacity: 0.5;
+            user-select: none;
+        }
+
+        .footer-block {
+            max-width: 400px;
+        }
+
+        .italic-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: #111111;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .bio-text p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #f1f0ec;
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+
+        /* ESTILOS DE BOTONES DE CONTACTO */
+        .contact-links {
+            margin-top: 16px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 6px 14px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #111111;
+            text-decoration: none;
+            border: 1px solid #111111;
+            border-radius: 2px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .contact-btn:hover {
+            background-color: #111111;
+            color: #F6F5F2;
+        }
+
+        /* --- SECCIÓN EDITORIAL: SOBRE MÍ / INFORMACIÓN --- */
+        .about-section {
+            max-width: 850px;
+            width: 100%;
+            border-top: 1px solid #111111;
+            padding-top: 60px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+        }
+
+        .about-header {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .about-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -1px;
+            color: #111111;
+            text-transform: uppercase;
+        }
+
+        .about-header .section-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #e5e4e0;
+            margin-top: 8px;
+            display: block;
+            white-space: nowrap;
+        }
+
+        .profile-crop-vertical {
+            width: 100%;
+            height: 380px;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .profile-crop-vertical img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(105%);
+        }
+
+        .about-body {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .about-block h3 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #111111;
+            margin-bottom: 12px;
+            border-bottom: 1px dashed rgba(17,17,17,0.3);
+            padding-bottom: 6px;
+        }
+
+        .about-block p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: #f1f0ec;
+            font-weight: 300;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-item .label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #e5e4e0;
+            font-weight: 500;
+        }
+
+        .info-item .value {
+            font-size: 0.85rem;
+            color: #111111;
+            font-weight: 700;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: #111111;
+            background-color: rgba(229, 228, 224, 0.4);
+            border: 1px solid rgba(17, 17, 17, 0.2);
+            padding: 6px 12px;
+            border-radius: 2px;
+        }
+
+        /* --- ESTILOS PARA PESTAÑAS Y VISOR DE PDF --- */
+        .cv-tab-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid #111111;
+            color: #111111;
+            padding: 6px 16px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: #111111;
+            color: #F6F5F2;
+        }
+
+        .pdf-viewer-frame {
+            width: 90%;
+            height: 550px;
+            border: 1px solid rgba(17, 17, 17, 0.2);
+            border-radius: 2px;
+            background-color: #E5E4E0;
+            overflow: hidden;
+            position: relative;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pdf-viewer-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* Adaptación para pantallas de celular */
+@media (max-width: 650px) {
+    body {
+        padding: 60px 15px 120px 15px;
+        gap: 25vh;
+    }
+    .poster-container, .about-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .image-banner {
+        height: 400px;
+    }
+    .vertical-text {
+        display: none;
+    }
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- REGULACIÓN MÓVIL DEL VISOR PDF --- */
+    .pdf-viewer-frame {
+        height: 520px; /* Altura óptima para pantallas verticales */
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden; /* Evita desbordamiento horizontal */
+    }
+
+    .pdf-viewer-frame iframe {
+        width: 100%;
+        height: 100%;
+        transform: scale(1); /* Mantiene la escala del contenedor */
+        -webkit-overflow-scrolling: touch; /* Desplazamiento fluido en iOS */
+    }
+
+    .profile-crop-vertical {
+        max-height: 260px;
+    }
+    .contact-links {
+        flex-direction: column;
+    }
+    .contact-btn {
+        text-align: center;
+        width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <main class="poster-container fade-section" id="hero-section">
+
+        <div class="image-banner">
+            <span class="img-tag">021</span>
+            
+            <img src="01.jpg" alt="Proyecto Arquitectónico">
+
+            <div class="vertical-text">
+                (ARQUITECTURA & MEP) * ARID LANDSCAPE INTEGRATION
+            </div>
+        </div>
+
+        <section class="content-side">
+
+            <div class="top-code">
+                07<br>03.
+            </div>
+
+            <div class="main-title-block">
+                <span class="kanji-title">Arquitecto · Архитектор · Architect · 建築師</span>
+                <span class="kanji-sub">建築與設計 · Архитектура и дизайн</span>
+                
+                <h1 class="hero-title">Giovanny.</h1>
+                <div class="title-outline">Giovanny.</div>
+            </div>
+
+            <div class="footer-block">
+                <span class="italic-tag">[Arquitectura y Diseño]</span>
+                <div class="bio-text">
+                    <p>Desarrollo conceptual y planimetría técnica enfocada en el rigor geométrico, la integración paisajística en entornos áridos y la eficiencia del modelado BIM.</p>
+                    <p>Enfoque en arquitectura Mid-Century Modern, diseño urbano, interiorismo e integración del paisajismo regional.</p>
+                </div>
+
+                <div class="contact-links">
+                    <a href="https://wa.me/526562567073" target="_blank" rel="noopener" class="contact-btn">WhatsApp</a>
+                    <a href="mailto:gio-luna-garcia@hotmail.com" class="contact-btn">Email</a>
+                    <a href="https://www.linkedin.com/in/arq-giovanny-luna" target="_blank" rel="noopener" class="contact-btn">LinkedIn</a>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <section class="about-section fade-section fade-in-hidden" id="about-section">
+        
+        <div class="about-header">
+            <div>
+                <h2>Sobre Mí</h2>
+                <span class="section-tag">[Perfil E Información]</span>
+            </div>
+
+            <div class="profile-crop-vertical">
+                <img src="Perfil.png" alt="Foto de perfil">
+            </div>
+
+            <div class="about-block">
+                <h3>Perfil Profesional</h3>
+                <p>
+                    Egresado de la licenciatura en Arquitectura por la Universidad Autónoma de Ciudad Juárez (UACJ). Mi práctica profesional abarca el dibujo técnico CAD, actualización de proyectos ejecutivos y el modelado de instalaciones e ingenierías (MEP).
+                </p>
+                <p style="margin-top: 12px;">
+                    Especialmente orientado hacia el lenguaje visual y espacial del Mid-Century Modern, proyectos residenciales boutique, diseño de interiores y la integración consciente de vegetación regional en paisajes áridos.
+                </p>
+            </div>
+        </div>
+
+        <div class="about-body">
+
+            <div class="about-block">
+                <h3>Información General</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">Nombre</span>
+                        <span class="value">Giovanny Luna García</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Profesión</span>
+                        <span class="value">Arquitecto</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Ubicación</span>
+                        <span class="value">Ciudad Juárez, Chih., MX</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Alma Máter</span>
+                        <span class="value">UACJ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-block">
+                <h3>Currículum Vitae / Resume</h3>
+                <p style="margin-bottom: 16px;">Consulta o descarga las versiones ejecutivas en formato PDF:</p>
+
+                <div class="contact-links" style="margin-bottom: 20px;">
+                    <a href="pdf/cv-esp.pdf" target="_blank" rel="noopener" class="contact-btn">
+                        📄 Descargar CV (ES)
+                    </a>
+                    <a href="pdf/cv-ing.pdf" target="_blank" rel="noopener" class="contact-btn">
+                        📄 Download Resume (EN)
+                    </a>
+                </div>
+
+                <div class="cv-tab-buttons">
+                    <button type="button" class="tab-btn active" id="btn-es" onclick="switchCvTab('es')">Español</button>
+                    <button type="button" class="tab-btn" id="btn-en" onclick="switchCvTab('en')">English</button>
+                </div>
+
+                <div class="cv-tabs-container">
+                    <div class="pdf-viewer-frame">
+                        <iframe id="pdf-frame" src="pdf/cv-esp.pdf#view=FitH&toolbar=0&navpanes=0" title="Visor de Curriculum Vitae">
+                            <div class="pdf-fallback">
+                                Tu navegador no soporta la visualización directa de PDF. 
+                                <a href="pdf/cv-esp.pdf" target="_blank" style="color:#111; font-weight:bold;">Haz clic aquí para abrirlo.</a>
+                            </div>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-block">
+                <h3>Especialización & Herramientas</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Revit (BIM / MEP)</span>
+                    <span class="skill-tag">AutoCAD</span>
+                    <span class="skill-tag">SketchUp</span>
+                    <span class="skill-tag">InDesign</span>
+                    <span class="skill-tag">Lumion</span>
+                    <span class="skill-tag">V-Ray</span>
+                    <span class="skill-tag">Enscape</span>
+                    <span class="skill-tag">D5 Render</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroSection = document.getElementById('hero-section');
+            const aboutSection = document.getElementById('about-section');
+
+            const observerOptions = {
+                root: null,
+                threshold: 0.05
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.target === heroSection) {
+                        if (entry.isIntersecting) {
+                            heroSection.classList.remove('fade-out');
+                        } else {
+                            heroSection.classList.add('fade-out');
+                        }
+                    }
+
+                    if (entry.target === aboutSection) {
+                        if (entry.isIntersecting) {
+                            aboutSection.classList.remove('fade-in-hidden');
+                        } else {
+                            aboutSection.classList.add('fade-in-hidden');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            observer.observe(heroSection);
+            observer.observe(aboutSection);
+        });
+
+        // Función para cambiar la fuente del iframe dinámicamente
+        function switchCvTab(lang) {
+            const pdfFrame = document.getElementById('pdf-frame');
+            const btnEs = document.getElementById('btn-es');
+            const btnEn = document.getElementById('btn-en');
+
+            if (lang === 'es') {
+                pdfFrame.src = "pdf/cv-esp.pdf#view=FitH&toolbar=0&navpanes=0";
+                btnEs.classList.add('active');
+                btnEn.classList.remove('active');
+            } else if (lang === 'en') {
+                pdfFrame.src = "pdf/cv-ing.pdf#view=FitH&toolbar=0&navpanes=0";
+                btnEn.classList.add('active');
+                btnEs.classList.remove('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
