@@ -522,7 +522,7 @@
 
                 <!-- BOTONES DE DESCARGA DIRECTA -->
                 <div class="contact-links" style="margin-bottom: 20px;">
-                    <a id="download-link-portfolio" href="./portfolio.pdf" target="_blank" rel="noopener" class="contact-btn">
+                    <a id="download-link-portfolio" href="./Portfolio.pdf" target="_blank" rel="noopener" class="contact-btn">
                         📁 Descargar Portafolio (PDF)
                     </a>
                     <a id="download-link-es" href="./cv-esp.pdf" target="_blank" rel="noopener" class="contact-btn">
@@ -542,12 +542,12 @@
 
                 <!-- VISOR DE PDF UNIFICADO -->
                 <div class="pdf-viewer-frame">
-                    <iframe id="main-doc-frame" src="./portfolio.pdf" title="Visor de Documentos">
+                    <iframe id="main-doc-frame" src="./Portfolio.pdf" title="Visor de Documentos">
                         <div class="pdf-fallback">
                             Tu navegador no soporta la visualización directa de PDF. 
-                            <a id="fallback-link" href="./portfolio.pdf" target="_blank" style="color:#111; font-weight:bold;">Haz clic aquí para abrirlo.</a>
+                            <a id="fallback-link" href="./Portfolio.pdf" target="_blank" style="color:#111; font-weight:bold;">Haz clic aquí para abrirlo.</a>
                         </div>
-                    </iframe>
+                </iframe>
                 </div>
             </div>
 
@@ -616,10 +616,10 @@
             btnEs.classList.remove('active');
             btnEn.classList.remove('active');
 
-            let selectedPath = './portfolio.pdf';
+            let selectedPath = './Portfolio.pdf';
 
             if (docType === 'portfolio') {
-                selectedPath = './portfolio.pdf';
+                selectedPath = './Portfolio.pdf';
                 btnPortfolio.classList.add('active');
             } else if (docType === 'es') {
                 selectedPath = './cv-esp.pdf';
