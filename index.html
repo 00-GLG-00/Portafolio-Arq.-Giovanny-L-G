@@ -338,18 +338,19 @@
             border-radius: 2px;
         }
 
-        /* --- ESTILOS PARA PESTAÑAS Y VISORES DE PDF --- */
-        .cv-tab-buttons {
+        /* --- ESTILOS PARA PESTAÑAS Y VISOR DE DOCUMENTOS --- */
+        .doc-tab-buttons {
             display: flex;
             gap: 8px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
         }
 
         .tab-btn {
             background: transparent;
             border: 1px solid #111111;
             color: #111111;
-            padding: 6px 16px;
+            padding: 8px 16px;
             font-family: 'HS Novano', sans-serif;
             font-size: 0.7rem;
             font-weight: 700;
@@ -367,7 +368,7 @@
 
         .pdf-viewer-frame {
             width: 100%;
-            height: 550px;
+            height: 580px;
             border: 1px solid rgba(17, 17, 17, 0.2);
             border-radius: 2px;
             background-color: #E5E4E0;
@@ -383,7 +384,7 @@
             display: block;
         }
 
-        /* Adaptación para pantallas de celular */
+        /* Adaptación para celulares */
         @media (max-width: 650px) {
             body {
                 padding: 60px 15px 120px 15px;
@@ -411,10 +412,10 @@
             .profile-crop-vertical {
                 max-height: 260px;
             }
-            .contact-links {
+            .contact-links, .doc-tab-buttons {
                 flex-direction: column;
             }
-            .contact-btn {
+            .contact-btn, .tab-btn {
                 text-align: center;
                 width: 100%;
             }
@@ -514,55 +515,39 @@
                 </div>
             </div>
 
-            <!-- BLOQUE DEL PORTAFOLIO DE PROYECTOS -->
+            <!-- SECCIÓN UNIFICADA DE DOCUMENTOS -->
             <div class="about-block">
-                <h3>Portafolio de Proyectos</h3>
-                <p style="margin-bottom: 16px;">Visualiza o descarga el dossier arquitectónico completo en formato PDF:</p>
+                <h3>Documentación & Dossier</h3>
+                <p style="margin-bottom: 16px;">Selecciona la pestaña para visualizar el archivo o utiliza las descargas directas:</p>
 
+                <!-- BOTONES DE DESCARGA DIRECTA -->
                 <div class="contact-links" style="margin-bottom: 20px;">
-                    <a href="./Portafolio.pdf" target="_blank" rel="noopener" class="contact-btn">
+                    <a id="download-link-portfolio" href="./Portafolio.pdf" target="_blank" rel="noopener" class="contact-btn">
                         📁 Descargar Portafolio (PDF)
                     </a>
-                </div>
-
-                <div class="pdf-viewer-frame">
-                    <iframe id="portfolio-frame" src="./Portafolio.pdf" title="Visor de Portafolio">
-                        <div class="pdf-fallback">
-                            Tu navegador no soporta la visualización directa de PDF. 
-                            <a href="./Portafolio.pdf" target="_blank" style="color:#111; font-weight:bold;">Haz clic aquí para abrirlo.</a>
-                        </div>
-                    </iframe>
-                </div>
-            </div>
-
-            <!-- BLOQUE DE CURRÍCULUM VITAE CON PESTAÑAS -->
-            <div class="about-block">
-                <h3>Currículum Vitae / Resume</h3>
-                <p style="margin-bottom: 16px;">Consulta o descarga las versiones ejecutivas en formato PDF:</p>
-
-                <div class="contact-links" style="margin-bottom: 20px;">
-                    <a href="./cv-esp.pdf" target="_blank" rel="noopener" class="contact-btn">
+                    <a id="download-link-es" href="./cv-esp.pdf" target="_blank" rel="noopener" class="contact-btn">
                         📄 Descargar CV (ES)
                     </a>
-                    <a href="./cv-ing.pdf" target="_blank" rel="noopener" class="contact-btn">
+                    <a id="download-link-en" href="./cv-ing.pdf" target="_blank" rel="noopener" class="contact-btn">
                         📄 Download Resume (EN)
                     </a>
                 </div>
 
-                <div class="cv-tab-buttons">
-                    <button type="button" class="tab-btn active" id="btn-es" onclick="switchCvTab('es')">Español</button>
-                    <button type="button" class="tab-btn" id="btn-en" onclick="switchCvTab('en')">English</button>
+                <!-- PESTAÑAS DEL VISOR -->
+                <div class="doc-tab-buttons">
+                    <button type="button" class="tab-btn active" id="btn-portfolio" onclick="switchDocTab('portfolio')">Portafolio</button>
+                    <button type="button" class="tab-btn" id="btn-cv-es" onclick="switchDocTab('es')">CV (Español)</button>
+                    <button type="button" class="tab-btn" id="btn-cv-en" onclick="switchDocTab('en')">Resume (English)</button>
                 </div>
 
-                <div class="cv-tabs-container">
-                    <div class="pdf-viewer-frame">
-                        <iframe id="pdf-frame" src="./cv-esp.pdf" title="Visor de Curriculum Vitae">
-                            <div class="pdf-fallback">
-                                Tu navegador no soporta la visualización directa de PDF. 
-                                <a href="./cv-esp.pdf" target="_blank" style="color:#111; font-weight:bold;">Haz clic aquí para abrirlo.</a>
-                            </div>
-                        </iframe>
-                    </div>
+                <!-- VISOR DE PDF UNIFICADO -->
+                <div class="pdf-viewer-frame">
+                    <iframe id="main-doc-frame" src="./Portafolio.pdf" title="Visor de Documentos">
+                        <div class="pdf-fallback">
+                            Tu navegador no soporta la visualización directa de PDF. 
+                            <a id="fallback-link" href="./Portafolio.pdf" target="_blank" style="color:#111; font-weight:bold;">Haz clic aquí para abrirlo.</a>
+                        </div>
+                    </iframe>
                 </div>
             </div>
 
@@ -618,20 +603,35 @@
             observer.observe(aboutSection);
         });
 
-        // Función para cambiar el PDF del CV dinámicamente
-        function switchCvTab(lang) {
-            const pdfFrame = document.getElementById('pdf-frame');
-            const btnEs = document.getElementById('btn-es');
-            const btnEn = document.getElementById('btn-en');
-        
-            if (lang === 'es') {
-                pdfFrame.src = "./cv-esp.pdf";
+        // Función para alternar el archivo mostrado en el visor dinámicamente
+        function switchDocTab(docType) {
+            const docFrame = document.getElementById('main-doc-frame');
+            const fallbackLink = document.getElementById('fallback-link');
+            
+            const btnPortfolio = document.getElementById('btn-portfolio');
+            const btnEs = document.getElementById('btn-cv-es');
+            const btnEn = document.getElementById('btn-cv-en');
+
+            btnPortfolio.classList.remove('active');
+            btnEs.classList.remove('active');
+            btnEn.classList.remove('active');
+
+            let selectedPath = './Portafolio.pdf';
+
+            if (docType === 'portfolio') {
+                selectedPath = './Portafolio.pdf';
+                btnPortfolio.classList.add('active');
+            } else if (docType === 'es') {
+                selectedPath = './cv-esp.pdf';
                 btnEs.classList.add('active');
-                btnEn.classList.remove('active');
-            } else if (lang === 'en') {
-                pdfFrame.src = "./cv-ing.pdf";
+            } else if (docType === 'en') {
+                selectedPath = './cv-ing.pdf';
                 btnEn.classList.add('active');
-                btnEs.classList.remove('active');
+            }
+
+            docFrame.src = selectedPath;
+            if (fallbackLink) {
+                fallbackLink.href = selectedPath;
             }
         }
     </script>
