@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giovanny Luna García | Portafolio</title>
     <style>
-        /* 1. FUENTE PERSONALIZADA: HS NOVANO */
         @font-face {
             font-family: 'HS Novano';
             src: url('./Helipad%20Space%20-%20HS%20Novano%20Regular.otf') format('opentype');
@@ -13,7 +12,6 @@
             font-style: normal;
         }
 
-        /* FUENTE SECUNDARIA DE GOOGLE FONTS */
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Space+Grotesk:wght@400;700&display=swap');
 
         * {
@@ -27,37 +25,34 @@
         }
 
         body {
-            /* Fondo claro con grano suave */
-            background-color: #6d6b68;
-            background-image: radial-gradient(#D5D4D0 0.8px, transparent 0.8px);
+            background-color: #585653;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.15) 0.8px, transparent 0.8px);
             background-size: 16px 16px;
-            color: #111111;
-            font-family: 'HS Novano', sans-serif;
+            color: #ffffff;
+            font-family: 'HS Novano', 'Space Grotesk', sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: 120px 20px 200px 20px;
-            gap: 20vh;
+            padding: 100px 20px 150px 20px;
+            gap: 16vh;
             overflow-x: hidden;
         }
 
-        /* --- CLASES Y ESTILOS PARA LA ANIMACIÓN DE DESVANECIMIENTO SUAVE --- */
+        /* ANIMACIONES DE ENTRADA */
         .fade-section {
             opacity: 1;
             transform: translateY(0);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .fade-section.fade-hidden {
             opacity: 0;
-            transform: translateY(40px);
-            pointer-events: none;
+            transform: translateY(30px);
         }
 
-        /* LIENZO PRINCIPAL (SECCIÓN HERO) */
+        /* HERO SECTION */
         .poster-container {
             display: grid;
             grid-template-columns: 280px 1fr;
@@ -67,15 +62,15 @@
             position: relative;
         }
 
-        /* --- COLUMNA IZQUIERDA: FOTO VERTICAL --- */
         .image-banner {
             position: relative;
             width: 100%;
-            height: 600px;
-            background-color: #E5E4E0;
+            height: 520px;
+            background-color: #2b2b2b;
             overflow: hidden;
             border-radius: 2px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .image-banner img {
@@ -83,21 +78,22 @@
             height: 100%;
             object-fit: cover;
             filter: grayscale(100%) contrast(105%);
+            display: block;
         }
 
         .img-tag {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 0.9rem;
+            top: 16px;
+            left: 16px;
+            font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: -0.5px;
+            letter-spacing: 0.5px;
             color: #111111;
-            background-color: rgba(255, 255, 255, 0.7);
-            padding: 2px 6px;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 4px 8px;
+            backdrop-filter: blur(4px);
         }
 
-        /* --- TEXTO VERTICAL ROTADO --- */
         .vertical-text {
             position: absolute;
             right: -25px;
@@ -106,27 +102,24 @@
             transform-origin: right top;
             font-size: 0.65rem;
             letter-spacing: 2px;
-            color: #111111;
+            color: rgba(255, 255, 255, 0.7);
             text-transform: uppercase;
             white-space: nowrap;
         }
 
-        /* --- COLUMNA DERECHA: TEXTOS Y TIPOGRAFÍA --- */
         .content-side {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            padding-top: 1px;
         }
 
         .top-code {
             text-align: right;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            line-height: 0.9;
-            letter-spacing: 1px;
-            color: #111111;
+            letter-spacing: 1.5px;
+            color: #ffffff;
         }
 
         .main-title-block {
@@ -136,46 +129,45 @@
 
         .kanji-title,
         .kanji-sub {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 2px;
-            color: #ffffff;
-            margin-bottom: 8px;
+            color: #d1d1d1;
+            margin-bottom: 6px;
             display: block;
-            line-height: 1.4;
+            text-transform: uppercase;
         }
 
         h1.hero-title {
-            font-size: 4rem;
+            font-size: 3.8rem;
             font-weight: 700;
             line-height: 0.9;
-            letter-spacing: -2px;
+            letter-spacing: -1.5px;
             position: relative;
             z-index: 2;
-            color: #111111;
+            color: #ffffff;
         }
 
         .title-outline {
-            font-size: 4rem;
+            font-size: 3.8rem;
             font-weight: 700;
             line-height: 0.9;
-            letter-spacing: -2px;
+            letter-spacing: -1.5px;
             color: transparent;
-            -webkit-text-stroke: 1px #ffffff;
-            margin-top: -15px;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.35);
+            margin-top: -12px;
             transform: scaleY(-1);
-            opacity: 0.4;
             user-select: none;
         }
 
         .footer-block {
-            max-width: 400px;
+            max-width: 420px;
         }
 
         .italic-tag {
             font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 1px;
-            color: #111111;
+            color: #e0e0e0;
             margin-bottom: 8px;
             display: block;
         }
@@ -183,14 +175,12 @@
         .bio-text p {
             font-size: 0.85rem;
             line-height: 1.6;
-            color: #ffffff;
+            color: #d8d8d8;
             font-weight: 300;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
-        /* ESTILOS DE BOTONES DE CONTACTO */
         .contact-links {
-            margin-top: 16px;
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
@@ -198,30 +188,30 @@
 
         .contact-btn {
             display: inline-block;
-            padding: 8px 16px;
+            padding: 8px 18px;
             font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #111111;
-            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.08);
             text-decoration: none;
-            border: 1px solid #111111;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 2px;
-            transition: all 0.2s ease-in-out;
+            transition: all 0.25 ease;
         }
 
         .contact-btn:hover {
-            background-color: #111111;
-            color: #F6F5F2;
+            background-color: #ffffff;
+            color: #111111;
         }
 
-        /* --- SECCIÓN EDITORIAL: SOBRE MÍ / INFORMACIÓN --- */
+        /* SOBRE MÍ */
         .about-section {
             max-width: 850px;
             width: 100%;
-            border-top: 1px solid #111111;
-            padding-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 50px;
             display: grid;
             grid-template-columns: 280px 1fr;
             gap: 40px;
@@ -230,33 +220,33 @@
         .about-header {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
 
         .about-header h2 {
             font-size: 1.8rem;
             font-weight: 700;
-            line-height: 1;
             letter-spacing: -1px;
-            color: #111111;
+            color: #ffffff;
             text-transform: uppercase;
         }
 
         .about-header .section-tag {
             font-family: 'Cinzel', serif;
             font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: #ffffff;
-            margin-top: 8px;
+            letter-spacing: 1.5px;
+            color: #cccccc;
+            margin-top: 4px;
             display: block;
-            white-space: nowrap;
         }
 
         .profile-crop-vertical {
             width: 100%;
-            height: 380px;
+            height: 320px;
             overflow: hidden;
             border-radius: 2px;
+            background-color: #2b2b2b;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .profile-crop-vertical img {
@@ -264,12 +254,13 @@
             height: 100%;
             object-fit: cover;
             filter: grayscale(100%) contrast(105%);
+            display: block;
         }
 
         .about-body {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 32px;
         }
 
         .about-block h3 {
@@ -277,23 +268,23 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #111111;
-            margin-bottom: 12px;
-            border-bottom: 1px dashed rgba(17,17,17,0.4);
+            color: #ffffff;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
             padding-bottom: 6px;
         }
 
         .about-block p {
             font-size: 0.85rem;
             line-height: 1.7;
-            color: #ffffff;
+            color: #d8d8d8;
             font-weight: 300;
         }
 
         .info-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+            gap: 20px;
         }
 
         .info-item {
@@ -306,44 +297,43 @@
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: #ffffff;
-            font-weight: 500;
+            color: #aaaaaa;
         }
 
         .info-item .value {
             font-size: 0.85rem;
-            color: #111111;
+            color: #ffffff;
             font-weight: 700;
         }
 
         .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
 
         .skill-tag {
             font-size: 0.7rem;
             font-weight: 500;
             letter-spacing: 0.5px;
-            color: #111111;
-            background-color: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(17, 17, 17, 0.3);
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 6px 12px;
             border-radius: 2px;
         }
 
-        /* --- ESTILOS PARA PESTAÑAS Y VISOR DE PDF --- */
+        /* VISOR PDF */
         .cv-tab-buttons {
             display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
+            gap: 10px;
+            margin-bottom: 14px;
         }
 
         .tab-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid #111111;
-            color: #111111;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
             padding: 8px 18px;
             font-family: 'Space Grotesk', sans-serif;
             font-size: 0.7rem;
@@ -356,32 +346,51 @@
         }
 
         .tab-btn.active, .tab-btn:hover {
-            background-color: #111111;
-            color: #F6F5F2;
+            background-color: #ffffff;
+            color: #111111;
         }
 
         .pdf-viewer-frame {
             width: 100%;
-            height: 550px;
-            border: 1px solid rgba(17, 17, 17, 0.3);
+            height: 520px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 2px;
-            background-color: #E5E4E0;
+            background-color: #2b2b2b;
             overflow: hidden;
             position: relative;
-            -webkit-overflow-scrolling: touch;
         }
 
-        .pdf-viewer-frame iframe {
+        .pdf-viewer-frame object {
             width: 100%;
             height: 100%;
-            border: none;
-            display: block;
         }
 
-        /* Adaptación para pantallas de celular */
+        .pdf-fallback {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 20px;
+            text-align: center;
+            gap: 12px;
+        }
+
+        .pdf-fallback a {
+            color: #ffffff;
+            background-color: rgba(255,255,255,0.15);
+            border: 1px solid #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
         @media (max-width: 650px) {
             body {
-                padding: 60px 15px 120px 15px;
+                padding: 50px 15px 100px 15px;
                 gap: 10vh;
             }
 
@@ -392,7 +401,7 @@
             }
 
             .image-banner {
-                height: 400px;
+                height: 380px;
             }
 
             h1.hero-title,
@@ -416,7 +425,8 @@
     <section class="poster-container fade-section">
         <div class="image-banner">
             <span class="img-tag">01 / ARCHITECTURE</span>
-            <img src="https://via.placeholder.com/280x600" alt="Giovanny Luna García">
+            <!-- Reemplaza src por tu foto de portada ej: ./img/portada.jpg -->
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Giovanny Luna García">
             <span class="vertical-text">PORTFOLIO &mdash; 2026 EDITION</span>
         </div>
 
@@ -451,7 +461,8 @@
                 <span class="section-tag">Perfil Profesional</span>
             </div>
             <div class="profile-crop-vertical">
-                <img src="https://via.placeholder.com/280x380" alt="Giovanny Luna Profile">
+                <!-- Reemplaza src por tu foto de perfil ej: ./img/perfil.jpg -->
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Giovanny Luna Profile">
             </div>
         </div>
 
@@ -502,50 +513,52 @@
                 <button class="tab-btn active" onclick="switchPdf('cv')">CV</button>
                 <button class="tab-btn" onclick="switchPdf('portfolio')">Portafolio</button>
             </div>
-            <div class="pdf-viewer-frame">
-                <iframe id="pdfFrame" src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"></iframe>
+            <div class="pdf-viewer-frame" id="pdfContainer">
+                <!-- Cambia 'tu-cv.pdf' por la ruta de tu archivo PDF local -->
+                <object id="pdfObject" data="./tu-cv.pdf" type="application/pdf">
+                    <div class="pdf-fallback">
+                        <p>Haz clic abajo para ver o descargar el documento directamente:</p>
+                        <a id="pdfDownloadLink" href="./tu-cv.pdf" target="_blank">Abrir Documento PDF</a>
+                    </div>
+                </object>
             </div>
         </div>
     </section>
 
-    <!-- SCRIPT CORREGIDO DE INTERACTIVIDAD Y ANIMACIÓN -->
     <script>
+        // Cambio de documento PDF
         function switchPdf(type) {
-            const frame = document.getElementById('pdfFrame');
+            const pdfObj = document.getElementById('pdfObject');
+            const pdfLink = document.getElementById('pdfDownloadLink');
             const buttons = document.querySelectorAll('.tab-btn');
             
             buttons.forEach(btn => btn.classList.remove('active'));
             
+            // Reemplaza estas rutas por tus archivos PDF reales (.pdf)
+            const cvPath = "./tu-cv.pdf";
+            const portfolioPath = "./tu-portafolio.pdf";
+
             if (type === 'cv') {
                 buttons[0].classList.add('active');
-                frame.src = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+                pdfObj.data = cvPath;
+                if(pdfLink) pdfLink.href = cvPath;
             } else {
                 buttons[1].classList.add('active');
-                frame.src = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf#page=1";
+                pdfObj.data = portfolioPath;
+                if(pdfLink) pdfLink.href = portfolioPath;
             }
         }
 
-        // JS Intersection Observer optimizado para evitar ocultar contenido en carga inicial
+        // Animación al hacer scroll sin ocultar accidentalmente
         document.addEventListener("DOMContentLoaded", () => {
             const sections = document.querySelectorAll('.fade-section');
-
-            const observerOptions = {
-                root: null,
-                threshold: 0.1
-            };
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.remove('fade-hidden');
-                    } else {
-                        // Solo ocultar si se ha desplazado significativamente hacia abajo
-                        if (entry.boundingClientRect.top > 0) {
-                            entry.target.classList.add('fade-hidden');
-                        }
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.1 });
 
             sections.forEach(section => observer.observe(section));
         });
